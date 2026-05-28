@@ -2,7 +2,7 @@
  Se esta dejando como modelo para implementación de versión final
  con los atributos finales de productos*/
 import { useState, useEffect } from 'react';
-import { ProductsAPIService, mockColores, mockMateriales, mockTamanos, mockPersonalizaciones } from '../api/products.api';
+import { ProductsAPIService, mockColores, mockMateriales, mockTamanos, mockPersonalizaciones } from '../api/mockProducts.api';
 import { ProductoGenerico, CreateProductGenericoDTO } from '../types/producto/productoGen.types';
 
 export const useProducts = (productId?: number) => {
