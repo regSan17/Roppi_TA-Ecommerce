@@ -39,7 +39,7 @@ let mockProductsDB: ProductoGenerico[] = [
     colores: [{ id_color: 1 }],
     materiales: [{ id_material: 1, costo_extra: 0.00 }],
     tamanos: [{ id_tamano: 1, alto: 70, ancho: 52 }, { id_tamano: 2, alto: 72, ancho: 54 }],
-    personalizaciones: [{ id_tipo_personalizacion: 1, costo_extra: 3.50 }]
+    personalizaciones: [{ id_personalizacion: 1, costo_extra: 3.50 }]
   }
 ];
 

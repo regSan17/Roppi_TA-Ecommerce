@@ -5,4 +5,4 @@ export interface GenericoXMaterial {
 export interface GenericoXTamano { 
     id_tamano: number; alto: number; ancho: number; }
 export interface GenericoXPersonalizacion { 
-    id_tipo_personalizacion: number; costo_extra: number; }
+    id_personalizacion: number; costo_extra: number; }
