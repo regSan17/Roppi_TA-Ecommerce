@@ -3,6 +3,7 @@ import { Color } from "../types/producto/color.types";
 import { Material } from "../types/producto/material.types";
 import { Personalizacion } from "../types/producto/personalizacion.types";
 import { Tamano } from "../types/producto/tamano.types";
+import {CreateDescuentoDTO, Descuento} from "../types/producto/descuento.types";
 import { CreateProductGenericoDTO, ProductoGenerico } from "../types/producto/productoGen.types";
 
 export const ProductosAPIService = {
@@ -58,4 +59,30 @@ export const ProductosAPIService = {
         //Falta cambiar el endpoint a la URL del backend.
         await apiClient.delete(`/api/productos/${id}`);
     }
+};
+
+export const DescuentosAPIService = {
+  getDescuentos: async (): Promise<Descuento[]> => {
+    const response = await apiClient.get<Descuento[]>('/api/descuentos');
+    return response.data;
+  },
+
+  getDescuentoById: async (id: number): Promise<Descuento> => {
+    const response = await apiClient.get<Descuento>(`/api/descuentos/${id}`);
+    return response.data;
+  },
+
+  createDescuento: async (dto: CreateDescuentoDTO): Promise<Descuento> => {
+    const response = await apiClient.post<Descuento>('/api/descuentos', dto);
+    return response.data;
+  },
+
+  updateDescuento: async (id: number, dto: Partial<CreateDescuentoDTO>): Promise<Descuento> => {
+    const response = await apiClient.put<Descuento>(`/api/descuentos/${id}`, dto);
+    return response.data;
+  },
+
+  deleteDescuento: async (id: number): Promise<void> => {
+    await apiClient.delete(`/api/descuentos/${id}`);
+  }
 };
