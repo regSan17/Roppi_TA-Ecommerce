@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { ProductList } from './comerciante/ProductList';
-import { DiscountTable } from './comerciante/DiscountTable';
-import { DiscountModal } from './comerciante/DiscountModal';
-import { ProductoGenerico } from '../types/producto/productoGen.types';
-import { Descuento } from '../types/producto/descuento.types';
+import { ProductList } from './ProductList';
+import { DiscountTable } from './DiscountTable';
+import { DiscountModal } from './DiscountModal';
+import { ProductoGenerico } from '../../types/producto/productoGen.types';
+import { Descuento } from '../../types/producto/descuento.types';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 
 export const DefaultComerciante = () => {
