@@ -11,7 +11,6 @@ export const AppRouter = () => {
 
   return (
     <Routes>
-      {/* 🔴 ASEGÚRATE DE QUE EL PATH SEA "/*" */}
       <Route path="/*" element={<ComercianteStack userId={SIMULATED_USER.id} />} />
     </Routes>
   );

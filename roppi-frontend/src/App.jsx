@@ -1,6 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import AppRouter from './navigation/appRouter';
 
+
 function App() {
   /*Regina: Se utiliza el AppRouter como principal orquestador 
    para las entradas al sistemas por lo cual esta sección es 
