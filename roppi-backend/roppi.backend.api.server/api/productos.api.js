@@ -1,11 +1,17 @@
 const express = require('express');
 
-// Importamos los gateways existentes para consumirlos
-const categoriasGateway = require('../../roppi.backend.modulos/roppi.backend.modulos.productos/categorias.gateway.js');
-const coloresGateway = require('../../roppi.backend.modulos/roppi.backend.modulos.productos/colores.gateway.js');
-const materialesGateway = require('../../roppi.backend.modulos/roppi.backend.modulos.productos/materiales.gateway.js');
-const tamanosGateway = require('../../roppi.backend.modulos/roppi.backend.modulos.productos/tamanos.gateway.js');
-const productosGateway = require('../../roppi.backend.modulos/roppi.backend.modulos.productos/productos.gateway.js');
+// Importamos los gateways existentes para consumirlos (Aunque no deberíamos hacerlo acá)
+/**
+ * De hecho, toda esta implementación, debería estar en la clase ProductosServer. Acá, se hace momentaneamente la
+ * implementación para evitar más confusiones y para no tener que modificar tanto código de golpe. En una refactorización futura, se debería mover toda
+ * esta lógica a ProductosServer, y dejar esta clase solo como un router que delega a ProductosServer.
+ */
+const genericosGateway = require('../../roppi.backend.modulos/roppi.backend.modulos.productos/genericos.bo.js');
+const coloresGateway = require('../../roppi.backend.modulos/roppi.backend.modulos.productos/colores.bo.js');
+const materialesGateway = require('../../roppi.backend.modulos/roppi.backend.modulos.productos/materiales.bo.js');
+const tamanosGateway = require('../../roppi.backend.modulos/roppi.backend.modulos.productos/tamanos.bo.js');
+const personalizacionesGateway = require('../../roppi.backend.modulos/roppi.backend.modulos.productos/personalizaciones.bo.js');
+const personalizadosGateway = require('../../roppi.backend.modulos/roppi.backend.modulos.productos/personalizados.bo.js');
 
 class ProductosAPI {
   constructor() {
@@ -22,7 +28,9 @@ class ProductosAPI {
     this.router.get('/colores', async (req, res) => this.procesarConsulta(req, res, 'listarColores'));
     this.router.get('/materiales', async (req, res) => this.procesarConsulta(req, res, 'listarMateriales'));
     this.router.get('/tamanos', async (req, res) => this.procesarConsulta(req, res, 'listarTamanos'));
-    this.router.get('/', async (req, res) => this.procesarConsulta(req, res, 'listarProductosEspecificos'));
+    this.router.get('/personalizaciones', async (req, res) => this.procesarConsulta(req, res, 'listarPersonalizaciones'));
+    this.router.get('/personalizados', async (req, res) => this.procesarConsulta(req, res, 'listarPersonalizados'));
+    this.router.get('/', async (req, res) => this.procesarConsulta(req, res, 'listarPersonalizados'));
   }
 
   async procesarConsulta(request, response, accion) {
@@ -31,20 +39,22 @@ class ProductosAPI {
 
       switch (accion) {
         case 'listarGenericos':
-          // Mapeamos el "Producto Genérico" a la tabla Categorías por ahora
-          resultado = await categoriasGateway.listarTodos();
+          resultado = await genericosGateway.findAll();
           break;
         case 'listarColores':
-          resultado = await coloresGateway.listarTodos();
+          resultado = await coloresGateway.findAll();
           break;
         case 'listarMateriales':
-          resultado = await materialesGateway.listarTodos();
+          resultado = await materialesGateway.findAll();
           break;
         case 'listarTamanos':
-          resultado = await tamanosGateway.listarTodos();
+          resultado = await tamanosGateway.findAll();
           break;
-        case 'listarProductosEspecificos':
-          resultado = await productosGateway.listarTodos();
+        case 'listarPersonalizaciones':
+          resultado = await personalizacionesGateway.findAll();
+          break;
+        case 'listarPersonalizados':
+          resultado = await personalizadosGateway.findAll();
           break;
         default:
           return this.devolverError(response, 400, 'Acción no válida');
