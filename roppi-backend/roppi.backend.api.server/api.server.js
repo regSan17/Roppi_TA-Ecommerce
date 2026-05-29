@@ -16,14 +16,15 @@ class APIServer {
   }
 
   _configurarMiddlewares() {
-    this.app.use(cors());
-    this.app.use(express.json());
+    // this.app.use(cors());
+    // this.app.use(express.json());
     // Se omitió AuthenticatorMiddleware por petición del usuario para pruebas
   }
 
   _distribuirRecursos() {
     // Instanciamos nuestras APIs
     const productosAPI = new ProductosAPI();
+    //TODO: Acá faltan las demás APIs (pedidos, usuarios, etc.)
     
     // Distribuimos las peticiones HTTP que empiecen con /api/productos a la clase correspondiente
     this.app.use('/api/productos', productosAPI.router);

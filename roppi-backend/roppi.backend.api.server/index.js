@@ -1,4 +1,4 @@
-require('dotenv').config({ path: '../.env' }); // Por si agregan variables en la raiz luego
+require('dotenv').config({ path: '../api.env' }); // Datos de conexión, etc...
 const APIServer = require('./api.server');
 
 async function main() {

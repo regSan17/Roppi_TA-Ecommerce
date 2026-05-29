@@ -24,12 +24,20 @@ class ProductosAPI {
 
   // Método interno para mapear rutas hacia el procesarConsulta
   _configurarRutas() {
+    // Genericos
     this.router.get('/genericos', async (req, res) => this.procesarConsulta(req, res, 'listarGenericos'));
+    // Colores
     this.router.get('/colores', async (req, res) => this.procesarConsulta(req, res, 'listarColores'));
+    // Materiales
     this.router.get('/materiales', async (req, res) => this.procesarConsulta(req, res, 'listarMateriales'));
+    // Tamaños
     this.router.get('/tamanos', async (req, res) => this.procesarConsulta(req, res, 'listarTamanos'));
+    // Personalizaciones
     this.router.get('/personalizaciones', async (req, res) => this.procesarConsulta(req, res, 'listarPersonalizaciones'));
+    // Personalizados
     this.router.get('/personalizados', async (req, res) => this.procesarConsulta(req, res, 'listarPersonalizados'));
+    
+
     this.router.get('/', async (req, res) => this.procesarConsulta(req, res, 'listarPersonalizados'));
   }
 

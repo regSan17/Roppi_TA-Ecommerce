@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:24.16.0-alpine
 
 # Establecer el directorio de trabajo dentro del contenedor
 WORKDIR /usr/src/app
