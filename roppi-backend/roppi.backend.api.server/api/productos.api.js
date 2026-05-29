@@ -62,10 +62,10 @@ class ProductosAPI {
 
       switch (accion) {
         case 'listarTodos':
-          resultado = await genericosBO.findAll();
+          resultado = await genericosBO.listarTodos();
           break;
         case 'obtenerPorId':
-          resultado = await genericosBO.findById(req.params.id); // Asumiendo que tu gateway tiene findById
+          resultado = await genericosBO.obtenerPorId(req.params.id); // Asumiendo que tu gateway tiene obtenerPorId
           break;
         case 'crear':
           resultado = await genericosBO.crear(req.body); // Le pasamos el JSON entero que viene de la petición
@@ -92,10 +92,10 @@ class ProductosAPI {
       let resultado = null;
       switch (accion) {
         case 'listarTodos':
-          resultado = await coloresBO.findAll();
+          resultado = await coloresBO.listarTodos();
           break;
         case 'obtenerPorId':
-          resultado = await coloresBO.findById(req.params.id);
+          resultado = await coloresBO.obtenerPorId(req.params.id);
           break;
         default:
           return this.devolverError(res, 400, 'Acción no válida en Colores');
@@ -112,10 +112,10 @@ class ProductosAPI {
       let resultado = null;
       switch (accion) {
         case 'listarTodos':
-          resultado = await materialesBO.findAll();
+          resultado = await materialesBO.listarTodos();
           break;
         case 'obtenerPorId':
-          resultado = await materialesBO.findById(req.params.id);
+          resultado = await materialesBO.obtenerPorId(req.params.id);
           break;
         default:
           return this.devolverError(res, 400, 'Acción no válida en Materiales');
@@ -132,10 +132,10 @@ class ProductosAPI {
       let resultado = null;
       switch (accion) {
         case 'listarTodos':
-          resultado = await tamanosBO.findAll();
+          resultado = await tamanosBO.listarTodos();
           break;
         case 'obtenerPorId':
-          resultado = await tamanosBO.findById(req.params.id);
+          resultado = await tamanosBO.obtenerPorId(req.params.id);
           break;
         default:
           return this.devolverError(res, 400, 'Acción no válida en Tamaños');
@@ -152,10 +152,10 @@ class ProductosAPI {
       let resultado = null;
       switch (accion) {
         case 'listarTodos':
-          resultado = await personalizacionesBO.findAll();
+          resultado = await personalizacionesBO.listarTodos();
           break;
         case 'obtenerPorId':
-          resultado = await personalizacionesBO.findById(req.params.id);
+          resultado = await personalizacionesBO.obtenerPorId(req.params.id);
           break;
         default:
           return this.devolverError(res, 400, 'Acción no válida en Personalizaciones');
@@ -172,10 +172,10 @@ class ProductosAPI {
       let resultado = null;
       switch (accion) {
         case 'listarTodos':
-          resultado = await personalizadosBO.findAll();
+          resultado = await personalizadosBO.listarTodos();
           break;
         case 'obtenerPorId':
-          resultado = await personalizadosBO.findById(req.params.id);
+          resultado = await personalizadosBO.obtenerPorId(req.params.id);
           break;
         default:
           return this.devolverError(res, 400, 'Acción no válida en Personalizados');
